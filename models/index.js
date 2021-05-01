@@ -5,22 +5,22 @@ const User = require('./User');
 
 // Comments belongsTo User
 Comment.belongsTo(User, {
-    foreignKey:'category_id'
+    foreignKey:'user_id'
   });
 
 
 // Users have many Posts
 User.hasMany(Post, {
-    foreignKey:'category_id'
+    foreignKey:'user_id'
 });
 
 // Users belongToMany Comments (through ProductTag)
 User.belongsToMany(Comment, {
   through: {
-    model: ProductTag,
+    model: Comment,
     unique: false,
   },
-  as: 'products_tag'
+  as: 'user_id'
 });
 
 module.exports = {
