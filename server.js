@@ -11,7 +11,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/blog-routes'));
+app.use(require('./controllers/post-routes'));
 
 app.listen(PORT, () => {
     console.log('server listening on: http://localhost:' + PORT);
