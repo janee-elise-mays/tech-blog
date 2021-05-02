@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Jim",
+        "email": "jimhalpert@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Pam",
+        "email": "pambeesley@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Amiko",
+        "email": "amiko2k20@aol.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Andy",
+        "email": "andybernard@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Dwight",
+        "email": "dwightschrute@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Michael",
+        "email": "michaelscott@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Angela",
+        "email": "angelamartin@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Phyllis",
+        "email": "phyllisvance@dundermifflin.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Kelly",
+        "email": "kellykapoor@dundermifflin.com",
+        "password": "password12345"
+    }
+]
