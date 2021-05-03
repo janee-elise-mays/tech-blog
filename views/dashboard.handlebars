@@ -1,0 +1,58 @@
+<div class="blog-container">
+  <div class="header col-md-10">
+    <h2>
+     Blog Post
+    </h2>
+  </div>
+  {{#each posts as |post|}}
+    <div class="post col-md-5">
+      <p>
+        {{post.id}}.
+        {{post.post_name}}
+      </p>
+    </div>
+    <div class="col-md-7">
+      <p>
+        User:
+        {{user.user_name}}
+      </p>
+    </div>
+  {{/each}}
+</div>
+<!-- This is the form for adding a new Post -->
+<div class="add-post-container">
+  <h2>
+    New Blog Post
+  </h2>
+  <form class="new-post-form">
+    <label for="post_name">
+      Post Title:
+    </label>
+    <br />
+    <textarea id="post_name" name="post_name" rows="2" cols="30">
+      {{post_name}}
+    </textarea>
+    <br />
+    <label for="description">
+      Description:
+    </label>
+    <br />
+    <textarea id="description" name="description" rows="5" cols="30">
+      {{description}}
+    </textarea>
+    <br />
+    <label for="user_name">
+      User Name:
+    </label>
+    <br />
+    <textarea id="user_name" name="user_name" rows="2" cols="30">
+      {{user_name}}
+    </textarea>
+    <br />
+    <br />
+    <button type="submit" value="Submit">
+      Submit
+    </button>
+  </form>
+</div>
+<script src="/js/add-post.js"></script>
