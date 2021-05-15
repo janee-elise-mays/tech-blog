@@ -14,7 +14,7 @@ User.hasMany(Post, {
     foreignKey:'user_id'
 });
 
-// Users belongToMany Comments (through ProductTag)
+// Users belongToMany Comments 
 User.belongsToMany(Comment, {
   through: {
     model: Comment,
