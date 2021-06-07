@@ -2,22 +2,48 @@ const router = require('express').Router();
 const { Post } = require('../models/');
 const withAuth = require('../utils/auth');
 
-// Use withAuth middleware to prevent access to route
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Post }],
+      const postData = await Post.findAll({
+        where: {
+          userId: req.session.userId,
+        },
       });
   
-      const user = userData.get({ plain: true });
+      const posts = postData.map((post) => post.get({ plain: true }));
   
-      res.render('dashboard', {
-        ...user,
-        logged_in: true
+      res.render('all-posts-admin', {
+        layout: 'dashboard',
+        posts,
       });
     } catch (err) {
-      res.status(500).json(err.message);
+      res.redirect('login');
     }
   });
+  
+  router.get('/new', withAuth, (req, res) => {
+    res.render('new-post', {
+      layout: 'dashboard',
+    });
+  });
+  
+  router.get('/edit/:id', withAuth, async (req, res) => {
+    try {
+      const postData = await Post.findByPk(req.params.id);
+  
+      if (postData) {
+        const post = postData.get({ plain: true });
+  
+        res.render('edit-post', {
+          layout: 'dashboard',
+          post,
+        });
+      } else {
+        res.status(404).end();
+      }
+    } catch (err) {
+      res.redirect('login');
+    }
+  });
+  
+  module.exports = router;
