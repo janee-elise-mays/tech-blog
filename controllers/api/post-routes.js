@@ -3,35 +3,35 @@ const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/create', withAuth, async (req, res) => {
+  const body = req.body;
+  
   try {
     const newPost = await Post.create({
-      ...req.body,
-      user_id: req.session.user_id,
+      ...body,
+      userid: req.session.userid,
     });
 
-    res.status(200).json(newPost);
+    res.json(newPost);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
-router.delete('/delete', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.destroy({
+    const [affectRows] = Post.destroy({
       where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
+        id: req.params.id,,
       },
     });
 
-    if (!newPost) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
+    if (affectedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-
-    res.status(200).json(newPost);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
